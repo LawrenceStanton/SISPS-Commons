@@ -1,0 +1,48 @@
+{
+	"version": 7,
+	"cmakeMinimumRequired": {
+		"major": 3,
+		"minor": 24
+	},
+	"configurePresets": [
+		{
+			"name": "arm-none-eabi",
+			"displayName": "ARM GCC Cross Compilation",
+			"description": "Cross Compilation for Embedded ARM Processors",
+			"hidden": true,
+			"cacheVariables": {
+				"CMAKE_C_COMPILER_WORKS": true,
+				"CMAKE_CXX_COMPILER_WORKS": true,
+				"CMAKE_TRY_COMPILE_TARGET_TYPE": "STATIC_LIBRARY"
+			},
+			"warnings": { "unusedCli": false },
+			"toolchainFile": "Modules/SISPS-Commons/CMake/arm-none-eabi.cmake",
+			"binaryDir": "Build"
+		},
+		{
+			"name": "Debug Target",
+			"inherits": ["arm-none-eabi"],
+			"displayName": "Debug Target",
+			"description": "Debug Embedded Target Build",
+			"hidden": false,
+			"cacheVariables": {
+				"CMAKE_BUILD_TYPE": "Debug",
+				"CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+			},
+			"binaryDir": "Build/Release"
+			// "generator": "Ninja"
+		}
+	],
+	"buildPresets": [
+		{
+			"name": "Release",
+			"displayName": "Build Main Project",
+			"description": "Default Build Configuration for Releasing Main Project",
+			"configurePreset": "Release",
+			"cleanFirst": true,
+			"targets": ["all"],
+			"jobs": 12,
+			"verbose": true
+		}
+	]
+}
