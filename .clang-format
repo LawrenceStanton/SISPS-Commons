@@ -3,7 +3,7 @@
 Language: Cpp
 
 BasedOnStyle: LLVM
-Standard: c++11
+Standard: c++17
 
 ColumnLimit: 120
 ReflowComments: true
@@ -16,32 +16,32 @@ SortIncludes: CaseInsensitive
 SortUsingDeclarations: LexicographicNumeric
 
 AlignConsecutiveMacros:
-  Enabled: true
-  AcrossEmptyLines: false
-  AcrossComments: true
-  AlignCompound: true
-  PadOperators: true
+    Enabled: true
+    AcrossEmptyLines: false
+    AcrossComments: true
+    AlignCompound: true
+    PadOperators: true
 
 AlignConsecutiveAssignments:
-  Enabled: true
-  AccrossEmptyLines: false
-  AccrossComments: true
-  PadOperators: true
+    Enabled: true
+    AcrossEmptyLines: false
+    AcrossComments: true
+    PadOperators: true
 
 AlignConsecutiveDeclarations:
-  Enabled: true
-  AccrossEmptyLines: false
-  AccrossComments: true
+    Enabled: true
+    AcrossEmptyLines: false
+    AcrossComments: true
 
 AlignConsecutiveBitFields:
-  Enabled: true
+    Enabled: true
 
 AlignOperands: AlignAfterOperator
 AlignEscapedNewlines: Right
 AlignAfterOpenBracket: BlockIndent
 AlignTrailingComments:
-  Kind: Always
-  OverEmptyLines: 0
+    Kind: Always
+    OverEmptyLines: 0
 
 AllowAllArgumentsOnNextLine: false
 AllowAllParametersOfDeclarationOnNextLine: false
