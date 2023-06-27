@@ -6,6 +6,18 @@
 	},
 	"configurePresets": [
 		{
+			"name": "Local",
+			"displayName": "Local Build",
+			"description": "Local Build for Unit Testing",
+			"cacheVariables": {
+				"CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+				"CMAKE_C_COMPILER": "gcc",
+				"CMAKE_CXX_COMPILER": "g++"
+			},
+			"warnings": {},
+			"binaryDir": "Build/Test"
+		},
+		{
 			"name": "arm-none-eabi",
 			"displayName": "ARM GCC Cross Compilation",
 			"description": "Cross Compilation for Embedded ARM Processors",
@@ -15,7 +27,9 @@
 				"CMAKE_CXX_COMPILER_WORKS": true,
 				"CMAKE_TRY_COMPILE_TARGET_TYPE": "STATIC_LIBRARY"
 			},
-			"warnings": { "unusedCli": false },
+			"warnings": {
+				"unusedCli": true
+			},
 			"toolchainFile": "Modules/SISPS-Commons/CMake/arm-none-eabi.cmake",
 			"binaryDir": "Build"
 		},
@@ -30,7 +44,6 @@
 				"CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
 			},
 			"binaryDir": "Build/Release"
-			// "generator": "Ninja"
 		}
 	],
 	"buildPresets": [
@@ -43,6 +56,26 @@
 			"targets": ["all"],
 			"jobs": 12,
 			"verbose": true
+		},
+		{
+			"name": "Local",
+			"displayName": "Local Build",
+			"description": "Local Build for Unit Testing",
+			"configurePreset": "Local",
+			"targets": ["SISPS-PV-LocalTest"],
+			"cleanFirst": true,
+			"jobs": 12,
+			"verbose": false
+		}
+	],
+	"testPresets": [
+		{
+			"name": "GoogleTest Unit Testing",
+			"description": "Unit Testing with GoogleTest",
+			"configurePreset": "Local",
+			"execution": {
+				"interactiveDebugging": true
+			}
 		}
 	]
 }
