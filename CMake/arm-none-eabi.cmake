@@ -6,13 +6,15 @@ set(CFLAGS
 	-fdata-sections  
 	-ffunction-sections 
 	--specs=nano.specs 
-	-Wl,--gc-sections)
+	-Wl,--gc-section
+)
 
 set(CXX_FLAGS 
 	# ${CFLAGS}
 	-fno-rtti
 	-fno-exceptions
-	-fno-threadsafe-statics)
+	-fno-threadsafe-statics
+)
 
 set(CMAKE_C_COMPILER ${TOOLCHAIN_PREFIX}gcc ${CFLAGS})
 set(CMAKE_CXX_COMPILER ${TOOLCHAIN_PREFIX}g++ ${CFLAGS} ${CXX_FLAGS})

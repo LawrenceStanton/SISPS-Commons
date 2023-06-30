@@ -63,7 +63,7 @@
 	"testPresets": [
 		{
 			"name": "Local Test",
-			"displayName": "Local Test",
+			"displayName": "Local Tests",
 			"description": "Local Testing on Host Machine",
 			"configurePreset": "Local"
 		}
