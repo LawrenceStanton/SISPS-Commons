@@ -22,15 +22,18 @@
 			"displayName": "ARM GCC Cross Compilation",
 			"description": "Cross Compilation for Embedded ARM Processors",
 			"hidden": true,
-			"cacheVariables": {},
+			"cacheVariables": {
+				"CMAKE_C_COMPILER": "arm-none-eabi-gcc",
+				"CMAKE_CXX_COMPILER": "arm-none-eabi-g++"
+			},
 			"warnings": {},
 			"toolchainFile": "Modules/SISPS-Commons/CMake/arm-none-eabi.cmake"
 		},
 		{
-			"name": "Debug Target",
+			"name": "Embedded",
 			"inherits": ["arm-none-eabi"],
-			"displayName": "Debug Target",
-			"description": "Debug Embedded Target Build",
+			"displayName": "Embedded Target",
+			"description": "Target Embedded Device",
 			"cacheVariables": {
 				"CMAKE_BUILD_TYPE": "Debug",
 				"CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
@@ -40,20 +43,26 @@
 	],
 	"buildPresets": [
 		{
-			"name": "Release",
-			"displayName": "Build Main Project",
-			"description": "Default Build Configuration for Releasing Main Project",
-			"configurePreset": "Release",
-			"cleanFirst": true,
+			"name": "Embedded",
+			"displayName": "Embedded Build",
+			"description": "Build to Target Embedded Device",
+			"configurePreset": "Embedded",
+			"environment": {
+				"CMAKE_BUILD_TYPE": "Release"
+			},
+			"cleanFirst": false,
 			"targets": ["all"],
 			"jobs": 12,
-			"verbose": true
+			"verbose": false
 		},
 		{
 			"name": "Local",
 			"displayName": "Local Build",
 			"description": "Local Build for Unit Testing",
 			"configurePreset": "Local",
+			"environment": {
+				"CMAKE_BUILD_TYPE": "Debug"
+			},
 			"targets": ["all", "test"],
 			"cleanFirst": false,
 			"jobs": 12,
