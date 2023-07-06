@@ -15,6 +15,10 @@ UseTab: Always
 SortIncludes: CaseInsensitive
 SortUsingDeclarations: LexicographicNumeric
 
+IndentPPDirectives: BeforeHash
+# IndentCaseLabels: true
+# IndentExternBlock: NoIndent
+
 AlignConsecutiveMacros:
     Enabled: true
     AcrossEmptyLines: false
@@ -48,9 +52,13 @@ AllowAllParametersOfDeclarationOnNextLine: false
 
 AllowShortFunctionsOnASingleLine: Inline
 AllowShortBlocksOnASingleLine: Always
+AllowShortIfStatementsOnASingleLine: AllIfsAndElse
 
 BinPackArguments: false
 BinPackParameters: false
+
+AlwaysBreakAfterReturnType: None
+AlwaysBreakTemplateDeclarations: MultiLine
 
 BreakBeforeBinaryOperators: NonAssignment
 BreakBeforeTernaryOperators: true
@@ -59,3 +67,16 @@ BreakInheritanceList: AfterComma
 
 AccessModifierOffset: -4
 EmptyLineBeforeAccessModifier: LogicalBlock
+
+InsertTrailingCommas: Wrapped
+InsertNewlineAtEOF: true
+
+IntegerLiteralSeparator:
+    Binary: 4
+    BinaryMinDigits: 8
+    Decimal: 3
+    DecimalMinDigits: 5
+    Hex: 2
+    HexMinDigits: 6
+
+FixNamespaceComments: true
