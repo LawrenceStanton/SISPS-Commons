@@ -2,19 +2,38 @@ set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_SYSTEM_PROCESSOR arm)
 
 set(TOOLCHAIN_PREFIX arm-none-eabi-)
-set(CFLAGS 
-	-fdata-sections  
-	-ffunction-sections 
-	--specs=nano.specs 
-	-Wl,--gc-section
-)
 
-set(CXX_FLAGS 
-	# ${CFLAGS}
-	-fno-rtti
-	-fno-exceptions
-	-fno-threadsafe-statics
-)
+# set(CFLAGS_INIT
+# 	-fdata-sections
+# 	-ffunction-sections
+# 	--specs=nano.specs
+# 	-Wl,--gc-section
+# )
+
+# set(CXXFLAGS_INIT
+# 	# ${CFLAGS_INIT}
+# 	-fdata-sections
+# 	-ffunction-sections
+# 	--specs=nano.specs
+# 	-Wl,--gc-section
+# 	-fno-rtti
+# 	-fno-exceptions
+# 	-fno-threadsafe-statics
+# )
+
+# string(REPLACE ";" " " CFLAGS_INIT_STR "${CFLAGS_INIT}")
+# string(REPLACE ";" " " CXXFLAGS_INIT_STR "${CXXFLAGS_INIT}")
+
+
+# set(CFLAGS
+# 	${CFLAGS_INIT_STR}
+# 	CACHE STRING "" FORCE
+# )
+
+# set(CXXFLAGS
+# 	${CXXFLAGS_INIT_STR}
+# 	CACHE STRING "" FORCE
+# )
 
 set(CMAKE_C_COMPILER ${TOOLCHAIN_PREFIX}gcc ${CFLAGS})
 set(CMAKE_CXX_COMPILER ${TOOLCHAIN_PREFIX}g++ ${CFLAGS} ${CXX_FLAGS})
