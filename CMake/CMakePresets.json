@@ -67,7 +67,7 @@
 			"description": "Build to Target Embedded Device with Debug",
 			"configurePreset": "Debug",
 			"environment": {},
-			"cleanFirst": true,
+			"cleanFirst": false,
 			"targets": ["all"],
 			"jobs": 12,
 			"verbose": false
