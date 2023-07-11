@@ -1,8 +1,8 @@
 {
-	"version": 7,
+	"version": 6,
 	"cmakeMinimumRequired": {
 		"major": 3,
-		"minor": 24
+		"minor": 25
 	},
 	"configurePresets": [
 		{
@@ -13,72 +13,112 @@
 				"CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
 				"CMAKE_C_COMPILER": "gcc-13",
 				"CMAKE_CXX_COMPILER": "g++-13",
-				"CMAKE_BUILD_TYPE": "Debug"
+				"CMAKE_BUILD_TYPE": "Debug",
+				"SISPSPV_ENABLE_CODE_COVERAGE": "ON"
 			},
 			"warnings": {},
 			"binaryDir": "Build/Test"
+		},
+		{
+			"name": "Server",
+			"displayName": "Build Server",
+			"description": "Minimal build configuration for Build Server.",
+			"cacheVariables": {
+				"CMAKE_BUILD_TYPE": "Release"
+			},
+			"binaryDir": "Build/Server"
 		},
 		{
 			"name": "arm-none-eabi",
 			"displayName": "ARM GCC Cross Compilation",
 			"description": "Cross Compilation for Embedded ARM Processors",
 			"hidden": true,
-			"cacheVariables": {},
+			"cacheVariables": {
+				"CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+			},
 			"warnings": {},
 			"toolchainFile": "Modules/SISPS-Commons/CMake/arm-none-eabi.cmake"
 		},
 		{
-			"name": "Embedded Debug",
+			"name": "Debug",
 			"inherits": ["arm-none-eabi"],
-			"displayName": "Debug Embedded Device",
+			"displayName": "Debug",
 			"description": "Debug Build to Target Embedded Device",
 			"cacheVariables": {
-				"CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
 				"CMAKE_BUILD_TYPE": "Debug"
 			},
-			"binaryDir": "Build/Debug"
+			"binaryDir": "Build/App/Debug"
 		},
 		{
-			"name": "Embedded Release",
-			"inherits": ["Embedded Debug"],
-			"displayName": "Release to Embedded Device",
+			"name": "Release",
+			"inherits": ["Debug"],
+			"displayName": "Release",
 			"description": "Release Build to Target Embedded Device",
 			"cacheVariables": {
 				"CMAKE_BUILD_TYPE": "Release"
 			},
-			"binaryDir": "Build/Release"
+			"binaryDir": "Build/App/Release"
 		}
 	],
 	"buildPresets": [
 		{
-			"name": "Embedded",
-			"displayName": "Embedded Build",
-			"description": "Build to Target Embedded Device",
-			"configurePreset": "Embedded",
+			"name": "Debug",
+			"displayName": "Debug",
+			"description": "Build to Target Embedded Device with Debug",
+			"configurePreset": "Debug",
 			"environment": {},
-			"cleanFirst": false,
+			"cleanFirst": true,
 			"targets": ["all"],
 			"jobs": 12,
 			"verbose": false
 		},
 		{
 			"name": "Local",
-			"displayName": "Local Build",
+			"displayName": "Local",
 			"description": "Local Build for Unit Testing",
 			"configurePreset": "Local",
 			"environment": {},
-			"targets": ["all", "test"],
+			"targets": ["all"],
 			"cleanFirst": false,
 			"jobs": 12,
+			"verbose": false
+		},
+		{
+			"name": "Server",
+			"displayName": "Server",
+			"description": "Configuration for building tests on minimal build server.",
+			"configurePreset": "Server",
+			"environment": {},
+			"targets": ["all"],
+			"cleanFirst": true,
 			"verbose": false
 		}
 	],
 	"testPresets": [
 		{
-			"name": "Local Test",
+			"name": "Local",
 			"displayName": "Local Tests",
 			"description": "Local Testing on Host Machine",
-			"configurePreset": "Local"
+			"configurePreset": "Local",
+			"output": {
+				"shortProgress": true,
+				"outputOnFailure": true
+			},
+			"execution": {
+				"jobs": 12
+			}
+		},
+		{
+			"name": "Server",
+			"displayName": "Server Side Tests",
+			"description": "Remote Testing on Build Server",
+			"configurePreset": "Server",
+			"output": {
+				"outputOnFailure": true
+			},
+			"execution": {
+				"stopOnFailure": true
+			}
 		}
 	]
 }
