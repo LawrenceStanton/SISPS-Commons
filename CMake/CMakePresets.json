@@ -23,6 +23,7 @@
 			"name": "Server",
 			"displayName": "Build Server",
 			"description": "Minimal build configuration for Build Server.",
+			"generator": "Unix Makefiles",
 			"cacheVariables": {
 				"CMAKE_BUILD_TYPE": "Release"
 			},
@@ -32,6 +33,7 @@
 			"name": "arm-none-eabi",
 			"displayName": "ARM GCC Cross Compilation",
 			"description": "Cross Compilation for Embedded ARM Processors",
+			"generator": "Unix Makefiles",
 			"hidden": true,
 			"cacheVariables": {
 				"CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
