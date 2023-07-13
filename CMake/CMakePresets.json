@@ -73,6 +73,16 @@
 			"verbose": false
 		},
 		{
+			"name": "Release",
+			"displayName": "Release",
+			"description": "Build to Target Embedded Device with Release",
+			"configurePreset": "Release",
+			"environment": {},
+			"cleanFirst": true,
+			"targets": ["all"],
+			"jobs": 12
+		},
+		{
 			"name": "Local",
 			"displayName": "Local",
 			"description": "Local Build for Unit Testing",
